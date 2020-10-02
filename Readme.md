@@ -5,6 +5,7 @@ To run this use-case you need:
 - An azure account
 - External DNS or similar that pushes the ingress resources into the DNS zone
 - A kubernetes Ingress controller
+- SSL termination at the ingress controller
 
 then the required tools:
 - kubectl
@@ -20,6 +21,8 @@ then the required tools:
 
 ## How to run
 Just run `make run`
+
+Then access the following url: `https://proxy.<DNS_ZONE_NAME>`
 
 ## how to destroy
 Just run `make destroy`
