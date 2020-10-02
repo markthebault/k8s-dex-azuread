@@ -1,4 +1,4 @@
-# Kubernetes DEX authenticator with azuread connection with Kubernetes
+# Kubernetes DEX authenticator with azuread connection
 
 ## pre-requisites:
 To run this use-case you need:
