@@ -1,0 +1,30 @@
+image:
+  repository: "quay.io/pusher/oauth2_proxy"
+  tag: "v6.1.1"
+
+ingress:
+  enabled: true
+  annotations: 
+    kubernetes.io/ingress.class: traefik2
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  path: /
+  hosts:
+    - proxy.{{ .Values.dnsZone }}
+
+config: {}
+
+extraArgs:
+  provider: oicd
+  provider-display-name: "My DEX OIDC Provider"
+  email-domain: "*"
+  upstream: "http://{{ .Values.proxyTargetServiceNameHost }}"
+  oidc-issuer-url: "https://dex.{{ .Values.dnsZone }}"
+  redirect-url: "https://proxy.{{ .Values.dnsZone }}/oauth2/callback"
+  cookie-secure: false
+  insecure-oidc-skip-issuer-verification: true
+  ssl-insecure-skip-verify: true
+  ssl-upstream-insecure-skip-verify: true
+  client-id: {{ .Values.dexClientId }}
+  client-secret: {{ .Values.dexClientSecret }}
+  cookie-secret: {{ .Values.cookieSecret }}

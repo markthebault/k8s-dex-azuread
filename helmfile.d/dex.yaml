@@ -1,0 +1,32 @@
+environments:
+  default:
+    values:
+      - ./conf/env.yaml.gotmpl
+
+releases:
+  - name: dex
+    chart: ../charts/dex-stable-chart
+    namespace: mth
+    version: 2.14.0
+    installed: true
+    values:
+      - ./conf/dex-conf.yaml.gotmpl
+
+  - name: nginx
+    chart: ../charts/nginx
+    namespace: mth
+    version: 7.1.1
+    installed: true
+    values: []
+    set:
+      - name: service.type
+        value: ClusterIP
+
+  - name: oauth2-proxy
+    chart: ../charts/oauth2-proxy
+    namespace: mth
+    version: 3.2.3
+    installed: true
+    values:
+      - ./conf/oauth2-conf.yaml.gotmpl
+
