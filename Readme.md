@@ -15,7 +15,7 @@ then the required tools:
 
 ## Configure the project
 - create an [azureAD application](https://docs.pivotal.io/p-identity/1-11/azure-oidc/config-azure.html)
-- configure the redirect url to proxy.<DNS_ZONE_NAME>
+- configure the AAD application to do URL redirect to `https://dex.<DNS_ZONE_NAME>`
 - update the `aad-app-conf.env.tmpl` to set the correct values and save it as `aad-app-conf.env`
 
 ## How to run
